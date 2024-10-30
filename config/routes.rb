@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # get "/articles", to: "articles#index" # rota index principal. Leva ao metodo chamado index.
   # get "/articles/:id", to: "articles#show"
 
-  resources :articles
-
+  resources :articles do
+    resources :comments
+  end
 end
+
