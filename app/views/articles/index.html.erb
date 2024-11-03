@@ -1,11 +1,15 @@
 <h1>Articles</h1>
 
+Nosso blog já conta com <strong> <%= Article.public_count %> </strong> artigo, e muitos mais estão por vir!
+
 <ul>
   <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article %>
-    </li>
+    <% unless article.archived? %>
+      <li>
+        <%= link_to article.title, article %>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 
-<%= link_to "New Article", new_article_path %>
+<%= link_to "Criar Novo artigo", new_article_path %>

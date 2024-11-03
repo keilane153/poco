@@ -1,4 +1,10 @@
 <%= form_with model: article do |form| %>
+
+    <div>
+      <%= form.label :status %><br>
+      <%= form.select :status, Visible::VALID_STATUSES, selected: article.status || 'public' %>
+    </div>
+
     <div>
       <%= form.label :title %><br>
       <%= form.text_field :title %>
@@ -18,5 +24,7 @@
     <div>
       <%= form.submit %>
     </div>
+
+  
   <% end %>
   
