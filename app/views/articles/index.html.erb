@@ -1,15 +1,18 @@
-<h1>Articles</h1>
-
-Nosso blog já conta com <strong> <%= Article.public_count %> </strong> artigo, e muitos mais estão por vir!
+Site de Publicações de artigos, com acervo de:  <strong> <%= Article.public_count %> </strong> trabalhos publicados.
 
 <ul>
-  <% @articles.each do |article| %>
-    <% unless article.archived? %>
-      <li>
+    <div class="div-li">
+
+      <% @articles.each do |article| %>
+      <% unless article.archived? %>
+      <li class='li-artigo'>
+        
         <%= link_to article.title, article %>
       </li>
-    <% end %>
-  <% end %>
-</ul>
+      <% end %>
+      <% end %>
+    </div>
+  </ul>
+  
+  <%= link_to "Criar Novo artigo", new_article_path %>
 
-<%= link_to "Criar Novo artigo", new_article_path %>

@@ -1,5 +1,6 @@
 
 Rails.application.routes.draw do
+  devise_for :admins
   root "articles#index" # torna o index a pagina principal. não precisando necessáriamente dar um /article.
   
   

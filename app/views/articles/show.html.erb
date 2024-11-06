@@ -4,14 +4,14 @@
 
 <ul>
   <li><%= link_to "Editar", edit_article_path(@article) %></li>
-  <li><%= link_to "Deletar", article_path(@article), data: {
+  <li><%= link_to "Excluir", article_path(@article), data: {
                     turbo_method: :delete,
-                    turbo_confirm: "Vocẽ tem certeza de que deseja DELETAR esse artigo?"
+                    turbo_confirm: "Vocẽ tem certeza de que deseja EXCLUIR esse artigo?"
                   } %></li>
 </ul>
 
-<h2>Comments</h2>
+<h2>Comentários nesta publicação: </h2>
 <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
+<h2>Adicionar comentários: </h2>
 <%= render "comments/form", article: @article %>

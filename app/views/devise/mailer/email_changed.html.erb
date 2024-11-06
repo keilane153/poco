@@ -1,0 +1,7 @@
+<p>Olá </p>
+
+<% if @resource.try(:unconfirmed_email?) %>
+  <p>Olá, Uma tentativa de alteração de email foi solicitada e requer verificação adicional porque não reconhecemos esse dispositivo. E que seu e-mail configurado inicialmente será alterado para: <%= @resource.unconfirmed_email %>.</p>
+<% else %>
+  <p>Seu e-mail foi alterado para: <%= @resource.email %>.</p>
+<% end %>
