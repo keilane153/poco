@@ -15,4 +15,4 @@ Site de Publicações de artigos, com acervo de:  <strong> <%= Article.public_co
   </ul>
   
   <%= link_to "Criar Novo artigo", new_article_path %>
-
+<div><%= button_to 'Desconectar ', destroy_admin_session_path, method: :delete, class:'btn btn-logout' %></div>

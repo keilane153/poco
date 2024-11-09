@@ -1,0 +1,143 @@
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* Layout principal */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.5em;
+  color: #333;
+}
+
+header p {
+  color: #666;
+}
+
+/* Links de navegação */
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 10px;
+}
+
+.navbar a:hover {
+  color: #0073e6;
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  background-color: #0073e6;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #005bb5;
+}
+
+/* Estilo dos artigos */
+.article-list {
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+.article-item {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s;
+}
+
+.article-item:hover {
+  background-color: #e6f7ff;
+}
+
+.article-item h2 {
+  font-size: 1.8em;
+  color: #0073e6;
+  margin-bottom: 10px;
+}
+
+.article-item p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Formulários */
+form {
+  margin-top: 20px;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+form input[type="text"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form input[type="submit"] {
+  background-color: #0073e6;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #005bb5;
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #777;
+}
+
+footer p {
+  margin: 5px 0;
+}

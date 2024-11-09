@@ -17,10 +17,11 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
+    @article.admin_id = current_admin.id 
     if @article.save
       redirect_to @article, notice: 'Publicação registrada com sucesso.'
     else
+      logger.debug "Erro ao criar artigo: #{@article.errors.full_messages}"
       render :new, status: :unprocessable_entity
     end
   end
@@ -46,9 +47,18 @@ class ArticlesController < ApplicationController
 
   def set_post
     @article = Article.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Artigo não encontrado."
+    redirect_to articles_path
   end
 
   def article_params
     params.require(:article).permit(:title, :body, :status)
+  end
+  def authorize_user!
+    unless @article.user == current_user
+      flash[:alert] = "Você não tem permissão para realizar essa ação."
+      redirect_to articles_path
+    end
   end
 end

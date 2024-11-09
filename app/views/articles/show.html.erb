@@ -1,17 +1,20 @@
-<h1><%= @article.title %></h1>
+<h1><strong>Título da Publicação: </strong><%= @article.title %></h1>
 
-<p><%= @article.body %></p>
-
+<p><strong>Descrição: </strong><%= @article.body %></p>
+<p><strong>Publicado em:</strong><%= @article.created_at.strftime("%d/%m/%Y %H:%M") %></p>
 <ul>
   <li><%= link_to "Editar", edit_article_path(@article) %></li>
-  <li><%= link_to "Excluir", article_path(@article), data: {
+  <% if @article.admin == current_admin %>
+    <li><%= link_to "Excluir", article_path(@article), data: {
                     turbo_method: :delete,
-                    turbo_confirm: "Vocẽ tem certeza de que deseja EXCLUIR esse artigo?"
+                    turbo_confirm: "Você tem certeza de que deseja EXCLUIR esse artigo?"
                   } %></li>
+  <% end %>
 </ul>
-
+<p><%= link_to "Voltar para a tela principal", articles_path, class: "btn btn-back" %></p>
 <h2>Comentários nesta publicação: </h2>
 <%= render @article.comments %>
 
 <h2>Adicionar comentários: </h2>
 <%= render "comments/form", article: @article %>
+

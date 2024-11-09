@@ -1,18 +1,25 @@
 <% unless comment.archived? %>
   <p>
-    <strong>Commenter:</strong>
+    <strong>Autor:</strong>
     <%= comment.commenter %>
   </p>
 
   <p>
-    <strong>Comment:</strong>
+    <strong>Comentário:</strong>
     <%= comment.body %>
   </p>
-
+  <p>
+    <strong>Publicado em:</strong>
+    <%= comment.created_at.strftime("%d/%m/%Y %H:%M") %> <!-- Exibe a data e hora do comentário -->
+  </p>
   <p>
     <%= link_to "Apagar Comentário", [comment.article, comment], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Vocẽ tem certeza de que deseja DELETAR esse comentário?"
                 } %>
+
   </p>
 <% end %>
+<p>
+  <%= link_to "Voltar para a tela principal", articles_path, class: "btn btn-back" %>
+</p>

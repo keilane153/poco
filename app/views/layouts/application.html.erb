@@ -14,9 +14,7 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    
-
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'style', media: 'all', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -25,34 +23,27 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-
-
     <header class="class-header">
 
       <div class="div-controler"></div>
 
       <div class="txt-center">
         <h1>Aurora Publicações</h1>
-
       </div>
 
       <div class="info-login">
-
         <% if admin_signed_in? %>
-        <p>Bem-vindo</p>
-        <%= button_to 'Criar conta ', destroy_admin_session_path, method: :delete, class:'btn btn-logout' %>
-        
+          <!-- Se o admin estiver logado, exibe a mensagem de boas-vindas e o botão de logout -->
+          <p>Bem-vindo, <%= current_admin.email %>!</p>
         <% else %>
-        <%= link_to 'Login ', new_admin_session_path %>
+          <!-- Se o admin não estiver logado, exibe o botão de login -->
+          <%= link_to 'Login', new_admin_session_path %>
         <% end %>
-
       </div>
 
-      
     </header>
 
-
-
     <%= yield %> 
+
   </body>
 </html>
