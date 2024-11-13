@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "App Blog" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta charset="UTF-8">
+    <title><%= content_for(:title) || "Aurora Publicações" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
 
     <%= stylesheet_link_tag 'style', media: 'all', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <header class="class-header">
-
-      <div class="div-controler"></div>
-
-      <div class="txt-center">
-        <h1>Aurora Publicações</h1>
-      </div>
-
-      <div class="info-login">
-        <% if admin_signed_in? %>
-          <!-- Se o admin estiver logado, exibe a mensagem de boas-vindas e o botão de logout -->
+    <!-- Condicional para esconder o cabeçalho e rodapé na tela de login -->
+    <% if controller_name != 'sessions' || action_name != 'new' %>
+      <header>
+        <div class="header-container">
+          <h1>Aurora Publicações</h1>
           <p>Bem-vindo, <%= current_admin.email %>!</p>
-        <% else %>
-          <!-- Se o admin não estiver logado, exibe o botão de login -->
-          <%= link_to 'Login', new_admin_session_path %>
-        <% end %>
-      </div>
+        </div>
+      </header>
+    <% end %>
 
-    </header>
+    <main>
+      <%= yield %>
+    </main>
 
-    <%= yield %> 
-
+    <% if controller_name != 'sessions' || action_name != 'new' %>
+      <nav>
+        <ul class="nav-links">
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'Criar Novo Artigo', new_article_path %></li>
+          <% if admin_signed_in? %>
+            <li><%= link_to 'Desconectar', destroy_admin_session_path, method: :delete, data: { turbo: false }, class: 'btn btn-logout' %></li>
+          <% else %>
+            <li><%= link_to 'Login', new_admin_session_path, class: 'btn btn-login' %></li>
+          <% end %>
+        </ul>
+      </nav>
+    <% end %>
+    <% if controller_name != 'sessions' || action_name != 'new' %>
+      <footer>
+        <p class="copyright">&copy; Copyright Aurora Publicações - 2024</p>
+      </footer>
+    <% end %>
   </body>
 </html>
